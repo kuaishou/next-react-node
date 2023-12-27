@@ -4,6 +4,8 @@ import QuestionRadio from "@/components/QuestionComponents/QuestionRadio"
 import styles from './Question.module.scss'
 import PageWrapper from "@/components/PageWrapper"
 import { getUqestionById } from "@/services/question"
+import { getComponent } from "@/components/QuestionComponents"
+import { it } from "node:test"
 
 type Iprops = {
     errno: number
@@ -31,7 +33,7 @@ function Question(props: Iprops) {
 
     }
 
-    const { id, title = '', isDeleted, isPublished } = data || {}
+    const { id, title = '', isDeleted, isPublished, componentList } = data || {}
     if (isDeleted) {//问卷被删除
         return <PageWrapper title='问卷被删除'>
             <h1>{title}</h1>
@@ -48,25 +50,38 @@ function Question(props: Iprops) {
 
     }
 
+    const CompontentList = <>
+        {
+            componentList?.map(item => {
+                const CompontentEle = getComponent(item)
+                return <div key={item.fe_id} className={styles.formWrapper}>
+                    {CompontentEle}
+                </div>
+            })
+        }
+    </>
+
+
 
     return <PageWrapper title={title}>
         <h1>Question</h1>
         <form method="POST" action='/api/answer'>
             <input type="hidden" name="questionId" value={id} />
-            <div className={styles.formWrapper}>
-                <QuestionInput fe_id='c1' inputDetail={{ title: '您的姓名', placeholder: '请输入姓名' }}></QuestionInput>
+            {CompontentList }
+            {/* <div className={styles.formWrapper}>
+                <QuestionInput fe_id='c1' detail={{ title: '您的姓名', placeholder: '请输入姓名' }}></QuestionInput>
             </div>
             <div className={styles.formWrapper}>
-                <QuestionRadio fe_id='c2' RadioDetail={{
+                <QuestionRadio fe_id='c2' detail={{
                     title: '您的性别',
-                    option: [
+                    options: [
                         { value: 'male', text: '男' },
                         { value: 'female', text: '女' }
                     ],
                     value: '',
                     isVertical: true
                 }}></QuestionRadio>
-            </div>
+            </div> */}
 
             <div className={styles.submit}>
                 <button type="submit">提交</button>

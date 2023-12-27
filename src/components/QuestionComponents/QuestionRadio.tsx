@@ -2,10 +2,10 @@
 import styles from './QuestionInput.module.scss'
 interface Ipops {
     fe_id: string,
-    RadioDetail: {
+    detail: {
         title: string,
         value?: string
-        option: {
+        options: {
             value: string,
             text: string
         }[],
@@ -14,19 +14,19 @@ interface Ipops {
 
 }
 const QuestionRadio = (props: Ipops) => {
-    const { fe_id, RadioDetail } = props
+    const { fe_id, detail } = props
 
     return (
         <>
-            <p>{RadioDetail.title}</p>
+            <p>{detail.title}</p>
             <ul className={styles.list}>
 
                 {
-                    RadioDetail.option.map(item => {
-                        let liClassName = RadioDetail.isVertical ? styles.verticalITem : styles.horizontalItem
+                    detail.options.map(item => {
+                        let liClassName = detail.isVertical ? styles.verticalITem : styles.horizontalItem
                         return <li className={liClassName} key={item.value}>
                             <label >
-                                <input type="radio" name={fe_id} value={item.value} defaultChecked={RadioDetail.value === item.value} />
+                                <input type="radio" name={fe_id} value={item.value} defaultChecked={detail.value === item.value} />
                                 {item.text}
                             </label>
                         </li>
