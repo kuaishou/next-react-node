@@ -1,7 +1,10 @@
+import PageWrapper from "@/components/PageWrapper"
+
 function Success() {
-  return <div>
+
+  return <PageWrapper title='提交成功'>
     <h1>问卷提交成功</h1>
-  </div>
+  </PageWrapper>
 }
 
 export default Success

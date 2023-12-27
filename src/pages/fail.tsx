@@ -1,7 +1,10 @@
+import PageWrapper from "@/components/PageWrapper"
+
 function Fail() {
-  return <div>
+
+  return <PageWrapper title='提交失败'>
     <h1>问卷提交失败</h1>
-  </div>
+  </PageWrapper>
 }
 
 export default Fail

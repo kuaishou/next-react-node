@@ -2,6 +2,7 @@ import QuestionInput from "@/components/QuestionComponents/QuestionInput"
 import QuestionRadio from "@/components/QuestionComponents/QuestionRadio"
 
 import styles from './Question.module.scss'
+import PageWrapper from "@/components/PageWrapper"
 
 type Iprops = {
     id: string
@@ -9,7 +10,7 @@ type Iprops = {
 //http://localhost:3000/question/12132132 可以访问并获取到动态参数ID
 function Question(props: Iprops) {
     const { id: questionId } = props
-    return <div>
+    return <PageWrapper title='问卷收集'>
         <h1>Question</h1>
         <h2>{props.id}</h2>
         <form method="POST" action='/api/answer'>
@@ -33,7 +34,7 @@ function Question(props: Iprops) {
                 <button type="submit">提交</button>
             </div>
         </form>
-    </div>
+    </PageWrapper>
 }
 
 export default Question
