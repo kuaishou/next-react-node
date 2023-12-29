@@ -1,11 +1,10 @@
-import QuestionInput from "@/components/QuestionComponents/QuestionInput"
-import QuestionRadio from "@/components/QuestionComponents/QuestionRadio"
+// import QuestionInput from "@/components/QuestionComponents/QuestionInput"
+// import QuestionRadio from "@/components/QuestionComponents/QuestionRadio"
 
 import styles from './Question.module.scss'
 import PageWrapper from "@/components/PageWrapper"
 import { getUqestionById } from "@/services/question"
 import { getComponent } from "@/components/QuestionComponents"
-import { it } from "node:test"
 
 type Iprops = {
     errno: number
